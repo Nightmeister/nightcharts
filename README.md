@@ -2,8 +2,9 @@
 
 This class includes a drawing histogram, pies and pseudo 3D pies.  
 It has very simple API and high level usability.  
+http://qt-apps.org/content/show.php?action=content&content=132560  
 
-Licensed under LGPL 2.1
+Licensed under LGPL 2.1  
 
 Example :
 
@@ -27,4 +28,4 @@ Example :
         PieChart.drawLegend(&painter);
     }
 
-
+![3DPie example](http://qt-apps.org/CONTENT/content-pre1/132560-1.PNG)
