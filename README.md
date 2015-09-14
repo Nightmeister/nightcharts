@@ -29,3 +29,13 @@ Example :
     }
 
 ![3DPie example](http://qt-apps.org/CONTENT/content-pre1/132560-1.PNG)
+
+### How to use
+
+ - Check out in any location (or add as a submodule)
+ - Write into Your main .pro file:
+
+ ```
+ include("path/to/nightcharts/nightcharts.pri")
+
+ ```
