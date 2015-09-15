@@ -62,6 +62,7 @@ public:
     int setFont(QFont f);
     int draw(QPainter *painter);
     int drawLegend(QPainter *painter);
+    int pieceCount();
     double palpha;
 
 private:

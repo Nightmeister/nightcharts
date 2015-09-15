@@ -3,23 +3,42 @@
 NightchartsWidget::NightchartsWidget(QWidget *parent) :
     QWidget(parent)
 {
+    clear();
+}
+void NightchartsWidget::setType(Nightcharts::type t)
+{
+    _chart.setType(t);
+}
+void NightchartsWidget::clear()
+{
+    _chart = Nightcharts();
+    _chart.setType(Nightcharts::Histogramm);
+    _chart.setLegendType(Nightcharts::Vertical);
+
+    _margin_left = 16;
+    _margin_top = 16;
+
 }
 
 void NightchartsWidget::paintEvent(QPaintEvent * e)
 {
     QWidget::paintEvent(e);
+    if(!_chart.pieceCount()) return ;
     QPainter painter;
     QFont font;
     painter.begin(this);
-    Nightcharts PieChart;
-    PieChart.setType(Nightcharts::Dpie);//{Histogramm,Pie,DPie};
-    PieChart.setLegendType(Nightcharts::Round);//{Round,Vertical}
-    PieChart.setCords(100,100,this->width()/3,this->height()/3);
-    PieChart.addPiece("Item1",QColor(200,10,50),34);
-    PieChart.addPiece("Item2",Qt::green,27);
-    PieChart.addPiece("Item3",Qt::cyan,14);
-    PieChart.addPiece("Item4",Qt::yellow,7);
-    PieChart.addPiece("Item5",Qt::blue,4);
-    PieChart.draw(&painter);
-    PieChart.drawLegend(&painter);
+    int w = (this->width() - _margin_left - 150);
+    int h = (this->height() - _margin_top - 100);
+    int size = (w<h)?w:h;
+    _chart.setCords(_margin_left, _margin_top,size, size);
+
+
+    _chart.draw(&painter);
+    _chart.drawLegend(&painter);
+    //painter.end();
+}
+
+void NightchartsWidget::addItem(QString name, QColor color, float value)
+{
+    _chart.addPiece(name,color,value);
 }
